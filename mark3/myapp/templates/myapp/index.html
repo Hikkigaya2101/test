@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>NIK_00</title>
+	<link rel="stylesheet" href="{% static 'myapp/css/qwe.css'%}">
+
+</head>
+<body>
+
+	<div class="content">
+
+	<div class="menu">
+    </form>
+		<div class="title"><h1>NAVIGATION</h1></div>
+		<div class="list_menu">
+
+			<h1 class="title">Управление</h1>
+              <ul id = 'myBtn' class="wtree">
+
+<li>
+    <span>Начальник упрвления</span>
+  </li>
+  <li>
+    <span>Начальник отдела</span>
+    <ul>
+      <li>
+        <span>Инженер</span>
+      </li>
+      <li>
+    <ul>
+        <li><span>Отдел</span></li>
+    <ul>
+          {% for i in positions %}
+      <li><span>{{ i.position_name }}</span></li>
+        {% endfor %}
+    </ul>
+         </ul>
+
+		</div>
+  <button id = 'add' class = 'button' onclick="vidget()">Добавить запись</button>
+      <button id = 'del' class = 'button' onclick="vidget()">Удалить запись</button>
+      <button id = 'upd' class = 'button' onclick="average()">Обновить запись</button>
+		<div class="footer_menu">
+			<p>Разработка прототипа</p>
+		</div>
+	</div>
+
+    <div id = 'm'class="menu_n">
+  <div class = "title_n"><h1>Профиль пользователя</h1></div>
+  <div class = "list_menu_n">
+
+
+         {% for j in workers %}
+      <div class ="card">
+      <img src="{{ j.img.url }}" width="300" height="200">
+                        <span class = 'position'> Должность:{{ j.position }}</span>
+                        <span class = 'position'>ФИО:{{ j.fio_worker }}</span>
+                        <span class = 'position'>Дата Рождения:{{ j.born_date }}</span>
+                        <span class = 'position'>Дата работы:{{ j.work_date }}</span>
+</div>
+                           {% endfor %}
+
+  <button id = 'nbt'  class = 'button' onclick="but()">Редактировать</button>
+  </div>
+  </div>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span id="close" class="close">&times;</span>
+
+      <h2>Добавить запись в БД</h2>
+    </div>
+    <div class="modal-body">
+
+            <form method="post" class="text">
+                                {% csrf_token %}
+{{ form.position_name }}
+                        <span class = 'position'> Должность:{{ form.position }}</span>
+                        <span class = 'position'>ФИО:{{ form.fio_worker }}</span>
+                        <span class = 'position'>Дата Рождения:{{ form.born_date }}</span>
+                        <span class = 'position'>Дата работы:{{ form.work_date }}</span>
+         <input type="submit" class="button" value="Добавить запись" />
+    </div>
+    <div class="modal-footer">
+       {% if workers.count > 0 %}
+    <h2>Список пользователей</h2>
+    <table>
+        <thead><th>Id</th><th>Имя</th><th>Возраст</th><th></th></thead>
+        {% for worker in workers %}
+        <tr>
+            <td>{{ worker.id }}</td>
+            <td>{{ worker.fio_worker }}</td>
+
+            <td><a href="edit/{{person.id}}">Изменить</a> | <a href="delete/{{worker.id}}">Удалить</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    </div>
+  </div>
+</div>
+
+		<img width="100%" src="{% static 'myapp/img/data.jpg'%}" alt="">
+    </div>
+
+
+
+
+
+
+<script src="{% static 'myapp/js/script.js' %}"></script>
+</body>
+</html>

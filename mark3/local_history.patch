@@ -1,0 +1,27 @@
+Index: myapp/templates/myapp/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/myapp/templates/myapp/index.html b/myapp/templates/myapp/index.html
+--- a/myapp/templates/myapp/index.html	
++++ b/myapp/templates/myapp/index.html	(date 1711563787602)
+@@ -5,7 +5,7 @@
+ 	<meta charset="UTF-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<title>NIK_00</title>
+-	<link rel="stylesheet" href="{% static 'main/css/style.css'%}">
++	<link rel="stylesheet" href="{% static 'myapp/css/style.css'%}">
+ </head>
+ <body>
+ 	<div class="menu">
+@@ -23,7 +23,7 @@
+ 		</div>
+ 	</div>
+ 	<div class="content">
+-		<img width="100%" src="{% static 'main/img/data.jpg'%}" alt="">
++		<img width="100%" src="{% static 'myapp/img/data.jpg'%}" alt="">
+ 	</div>
+ </body>
+ </html>
+\ No newline at end of file
